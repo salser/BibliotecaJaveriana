@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { LibroListComponent } from './biblioteca/libro-list/libro-list.component';
 import { LibroViewComponent } from './biblioteca/libro-view/libro-view.component';
 import { LibroAddComponent } from './biblioteca/libro-add/libro-add.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { LibroAddComponent } from './biblioteca/libro-add/libro-add.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
