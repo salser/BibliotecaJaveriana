@@ -1,20 +1,60 @@
-<div>
-  <h1>Libros</h1>
+<div class="container">
+    <h1>Libros</h1>
 
-  <table>
-    <tbody>
-      <tr>
-        <td><!--{{NombreLibro}}--></td>
-        <td>Ver</td>
-        <td>Editar</td>
-        <td>Borrar</td>
-      </tr>
-    </tbody>
-  </table>
+    <table class="table" style="margin-bottom: 30px;">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Título</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">Autores</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>1</th>
+                <td>Libro 1</td>
+                <td>123-456</td>
+                <td>autor1</td>
+                <td>
+                    <a (click)="verLibroClick()"><i class="fa fa-edit"></i></a>
+                </td>
+                <td>
+                    <a (click)="eliminarLibro()"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td>Libro 1</td>
+                <td>123-456</td>
+                <td>autor2</td>
+                <td>
+                    <a (click)="verLibroClick()"><i class="fa fa-edit"></i></a>
+                </td>
+                <td>
+                    <a (click)="eliminarLibro()"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td>Libro 3</td>
+                <td>123-456</td>
+                <td>autor3</td>
+                <td>
+                    <a (click)="verLibroClick()"><i class="fa fa-edit"></i></a>
+                </td>
+                <td>
+                    <a (click)="eliminarLibro()"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-  <a [routerLink]="['/biblioteca/libro-add']" routerLinkActive="router-link-active" >Agregar</a>
-  
-  <div ng-if="vistaLibro">
-    <h2>Ver Libro</h2>
-  </div>
+    <a [routerLink]="['/biblioteca/libro-add']" routerLinkActive="router-link-active">Agregar</a>
+    <hr>
+    <div [hidden]="!verLibro">
+        <h2>Ver Libro</h2>
+    </div>
 </div>

@@ -1,11 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Bienvenido a {{ title }}!
-  </h1>
+<div style="margin-bottom: 50px">
+    <nav class="navbar navbar-toggleable-md bg-faded">
+
+        <a class="navbar-brand navTitle" [routerLink]="[ '/biblioteca/libro-list'] " routerLinkActive="router-link-active ">Bienvenido a {{ title }}</a>
+
+    </nav>
 </div>
-<h2> </h2>
-
-
-
 <router-outlet></router-outlet>

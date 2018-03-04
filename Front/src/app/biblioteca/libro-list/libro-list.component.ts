@@ -7,7 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LibroListComponent implements OnInit {
 
-  constructor() { }
+  verLibro: boolean;
+  constructor() {
+    this.verLibro = false;
+  }
+
+  verLibroClick() {
+    this.verLibro = true;
+  }
+
+  eliminarLibro() {
+    this.verLibro = false;
+    confirm('Estas seguro?');
+  }
 
   ngOnInit() {
   }

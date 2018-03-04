@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~font-awesome/css/font-awesome.css';
+.navbar {
+    background-color: darkslategrey;
+    color: white;
+}
+
+.navTitle {
+    color: white;
+}
+
+.navTitle:hover {
+    color: #bcbcbc;
+}
+
+.align-center {
+    text-align: center;
+}
+
+td,
+th {
+    text-align: center !important;
+}
+
+a {
+    cursor: pointer;
+}
+
+i.fa-trash:hover {
+    color: red;
+}
+
+i.fa-edit:hover {
+    color: blue;
+}

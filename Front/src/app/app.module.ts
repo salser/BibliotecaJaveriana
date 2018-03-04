@@ -8,6 +8,7 @@ import { LibroListComponent } from './biblioteca/libro-list/libro-list.component
 import { LibroViewComponent } from './biblioteca/libro-view/libro-view.component';
 import { LibroAddComponent } from './biblioteca/libro-add/libro-add.component';
 import { FormsModule } from '@angular/forms';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
