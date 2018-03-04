@@ -1,0 +1,20 @@
+<div>
+  <h1>Libros</h1>
+
+  <table>
+    <tbody>
+      <tr>
+        <td><!--{{NombreLibro}}--></td>
+        <td>Ver</td>
+        <td>Editar</td>
+        <td>Borrar</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a [routerLink]="['/biblioteca/libro-add']" routerLinkActive="router-link-active" >Agregar</a>
+  
+  <div ng-if="vistaLibro">
+    <h2>Ver Libro</h2>
+  </div>
+</div>
