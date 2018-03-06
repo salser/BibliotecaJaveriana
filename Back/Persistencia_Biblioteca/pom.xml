@@ -19,11 +19,6 @@
 			<url>http://maven.apache.org</url>
 		</repository>
 		<repository>
-			<id>datanucleus</id>
-			<name>Datanucleus</name>
-			<url>http://www.datanucleus.org/downloads/maven2/</url>
-		</repository>
-		<repository>
 			<id>snapshots-repo</id>
 			<url>http://repository.apache.org/snapshots/</url>
 			<releases>
@@ -77,12 +72,6 @@
 			<artifactId>hibernate-envers</artifactId>
 			<version>${hibernate-release}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-ehcache</artifactId>
-			<version>${hibernate-release}</version>
-		</dependency>
-		
 		
 		<dependency>
 			<groupId>mysql</groupId>
@@ -105,31 +94,5 @@
 		</dependency>
 		
 	</dependencies>
-
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>aspectj-maven-plugin</artifactId>
-					<version>1.10</version>
-					<configuration>
-						<complianceLevel>1.7</complianceLevel>
-						<source>1.7</source>
-						<target>1.7</target>
-					</configuration>
-					<executions>
-						<execution>
-							<phase>process-sources</phase>
-							<goals>
-								<goal>compile</goal>       <!-- use this goal to weave all your main classes -->
-								<goal>test-compile</goal>  <!-- use this goal to weave all your test classes -->
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
 	
 </project>

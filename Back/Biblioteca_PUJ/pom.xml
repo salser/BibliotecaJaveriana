@@ -15,34 +15,10 @@
 		</repository>
 	</repositories>
 	<properties>
-		<spring-release>4.3.11.RELEASE</spring-release>
-		<commonsIO-release>2.6</commonsIO-release>
 		<restlet-version>3.0-M1</restlet-version>
 		<junit-release>3.8.1</junit-release>
 	</properties>
 	<dependencies>
-
-		<!-- Spring support -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>${spring-release}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>${spring-release}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-expression</artifactId>
-			<version>${spring-release}</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-			<version>1</version>
-		</dependency>
 		<!-- Testing support -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -71,10 +47,21 @@
 			<artifactId>org.restlet.ext.oauth</artifactId>
 			<version>${restlet-version}</version>
 		</dependency>
+		<!-- GSON -->
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
-			<groupId>org.restlet.jee</groupId>
-			<artifactId>org.restlet.ext.spring</artifactId>
-			<version>${restlet-version}</version>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.2</version>
+		</dependency>
+
+		
+		<!-- Persistencia -->
+		<dependency>
+			<groupId>co.edu.javeriana</groupId>
+			<artifactId>Persistencia_Biblioteca</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>pom</type>
 		</dependency>
 	</dependencies>
 	<build>
@@ -92,12 +79,12 @@
 					<username>admin</username>
 				</configuration>
 				<dependencies>
-				<dependency>
-					<groupId>org.apache.httpcomponents</groupId>
-					<artifactId>httpclient</artifactId>
-					<version>4.5.3</version>
-				</dependency>
-			</dependencies>
+					<dependency>
+						<groupId>org.apache.httpcomponents</groupId>
+						<artifactId>httpclient</artifactId>
+						<version>4.5.3</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
