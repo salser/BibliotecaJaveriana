@@ -146,5 +146,42 @@ public class LibroDAO extends AbstractDAO {
 		}
 		return result;
 	}
+	
+	public LibroBO getLibroById(int id) {
+		LibroBO result= null;
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			String hql = " from " + LibroBO.class.getName() + " where idLibro = :id";
+			Query query = session.createQuery(hql);
+			query.setParameter("id", id);
+			Object row = query.uniqueResult();
+			boolean flag = row != null;
+
+			if (flag) {
+				LibroBO libro = (LibroBO) row;
+				session.save(libro);
+				tx.commit();
+				result = libro;
+			} else {
+				//error
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null) {
+				tx.rollback();
+			}
+		} finally {
+			try {
+				session.flush();
+				session.close();
+			} catch (NullPointerException e) {
+				//error cerrando conexión
+			}
+		}
+		return result;
+	}
 
 }

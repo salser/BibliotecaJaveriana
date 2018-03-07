@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
@@ -32,6 +33,7 @@ public class TestLibro {
 		assertTrue(result);
 	}
 	
+	@Ignore
 	@Test
 	public void testCeliminar() {
 		boolean result = dao.eliminarLibro("123");
