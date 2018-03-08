@@ -1,16 +1,15 @@
 import { Libro } from './libro';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class LibroService {
 
-  l1: Libro;
-  l2: Libro;
-  constructor() {
-    this.l1 = new Libro();
-    this.l2 = new Libro();
-    this.l1.setData(1, '50 sombras de carlos', '789-987', 'Jose Dom');
-    this.l2.setData(2, '50 sombras de jose', '420-420', 'Carlos Qui');
+  constructor(private http: HttpClient) {
    }
+   findAll(): Observable<Libro[]> {
+    return this.http.get<Libro[]>('http://localhost:8080/libros');
+  }
 
 }
