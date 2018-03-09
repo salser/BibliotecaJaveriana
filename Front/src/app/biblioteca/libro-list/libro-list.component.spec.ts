@@ -1,25 +1,16 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 
 import { LibroListComponent } from './libro-list.component';
+import { LibroService } from '../shared/libro.service';
 
 describe('LibroListComponent', () => {
-  let component: LibroListComponent;
-  let fixture: ComponentFixture<LibroListComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ LibroListComponent ]
-    })
-    .compileComponents();
-  }));
-
   beforeEach(() => {
-    fixture = TestBed.createComponent(LibroListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({
+      providers: [LibroService]
+    });
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  it('should be created', inject([LibroService], (service: LibroService) => {
+    expect(service).toBeTruthy();
+  }));
 });

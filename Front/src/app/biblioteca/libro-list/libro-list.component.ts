@@ -11,6 +11,8 @@ export class LibroListComponent implements OnInit {
 
   libros: Libro[];
   verLibro: boolean;
+  selectedLibro: Libro;
+  idFind: number;
   constructor(private service: LibroService) {
     this.verLibro = false;
   }
@@ -18,12 +20,19 @@ export class LibroListComponent implements OnInit {
   ngOnInit() {
     this.service.findAll()
       .subscribe(libros => this.libros = libros);
+      this.selectedLibro = new Libro();
   }
-  verLibroClick() {
+  verLibroClick(id) {
     this.verLibro = true;
+    this.idFind = id;
+    console.log('id: ' + id);
+    this.service.findById(this.idFind)
+      .subscribe(
+        libro => this.selectedLibro = libro,
+        error => console.log('Error: ' + error));
   }
 
-  eliminarLibro() {
+  eliminarLibro(id) {
     this.verLibro = false;
     confirm('Estas seguro?');
   }

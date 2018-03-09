@@ -12,4 +12,8 @@ export class LibroService {
     return this.http.get<Libro[]>('http://localhost:8080/libros');
   }
 
+  findById(id: number): Observable<Libro> {
+    return this.http.get<Libro>('http://localhost:8080/libros/' + id);
+  }
+
 }

@@ -10,6 +10,7 @@ import { LibroAddComponent } from './biblioteca/libro-add/libro-add.component';
 import { FormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { HttpClientModule } from '@angular/common/http';
+import { LibroService } from './biblioteca/shared/libro.service';
 
 
 @NgModule({
@@ -22,11 +23,11 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
-    AngularFontAwesomeModule,
-    HttpClientModule
+    AngularFontAwesomeModule
   ],
-  providers: [],
+  providers: [LibroService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

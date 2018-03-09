@@ -13,40 +13,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th>1</th>
-                <td>Libro 1</td>
-                <td>123-456</td>
-                <td>autor1</td>
+            <tr *ngFor="let libro of libros">
+                <th>{{ libro.idLibro }}</th>
+                <td>{{ libro.nombre }}</td>
+                <td>{{ libro.isbn }}</td>
+                <td>{{ libro.autores }}</td>
                 <td>
-                    <a (click)="verLibroClick()"><i class="fa fa-edit"></i></a>
+                    <a (click)="verLibroClick(libro.idLibro)"><i class="fa fa-edit"></i></a>
                 </td>
                 <td>
-                    <a (click)="eliminarLibro()"><i class="fa fa-trash"></i></a>
-                </td>
-            </tr>
-            <tr>
-                <th>2</th>
-                <td>Libro 1</td>
-                <td>123-456</td>
-                <td>autor2</td>
-                <td>
-                    <a (click)="verLibroClick()"><i class="fa fa-edit"></i></a>
-                </td>
-                <td>
-                    <a (click)="eliminarLibro()"><i class="fa fa-trash"></i></a>
-                </td>
-            </tr>
-            <tr>
-                <th>3</th>
-                <td>Libro 3</td>
-                <td>123-456</td>
-                <td>autor3</td>
-                <td>
-                    <a (click)="verLibroClick()"><i class="fa fa-edit"></i></a>
-                </td>
-                <td>
-                    <a (click)="eliminarLibro()"><i class="fa fa-trash"></i></a>
+                    <a (click)="eliminarLibro(libro.idLibro)"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
         </tbody>
@@ -56,5 +32,23 @@
     <hr>
     <div [hidden]="!verLibro">
         <h2>Ver Libro</h2>
+        <table class="table" style="margin-bottom: 30px;">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Autores</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>{{ selectedLibro.idLibro }}</th>
+                    <td>{{ selectedLibro.nombre }}</td>
+                    <td>{{ selectedLibro.isbn }}</td>
+                    <td>{{ selectedLibro.autores }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
