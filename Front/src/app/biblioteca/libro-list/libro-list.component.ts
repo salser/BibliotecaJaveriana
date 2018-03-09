@@ -1,3 +1,5 @@
+import { LibroService } from './../shared/libro.service';
+import { Libro } from './../shared/libro';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,11 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LibroListComponent implements OnInit {
 
+  libros: Libro[];
   verLibro: boolean;
-  constructor() {
+  constructor(private service: LibroService) {
     this.verLibro = false;
   }
 
+  ngOnInit() {
+    this.service.findAll()
+      .subscribe(libros => this.libros = libros);
+  }
   verLibroClick() {
     this.verLibro = true;
   }
@@ -20,8 +27,4 @@ export class LibroListComponent implements OnInit {
     this.verLibro = false;
     confirm('Estas seguro?');
   }
-
-  ngOnInit() {
-  }
-
 }
