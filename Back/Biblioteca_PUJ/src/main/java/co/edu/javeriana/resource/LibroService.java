@@ -12,6 +12,9 @@ import org.restlet.resource.ServerResource;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import co.edu.javeriana.Persistencia_Biblioteca.dto.LibroDTO;
+import co.edu.javeriana.Persistencia_Biblioteca.fachada.FachadaPersistencia;
+
 /**
  * @author hsalazar
  *
@@ -22,23 +25,22 @@ public class LibroService extends ServerResource {
 	// GEt LIbro by ID
 	public String doGet() {
 		String id = (String) getRequest().getAttributes().get("id");
-		Gson parser = new GsonBuilder().setDateFormat(DateFormat.FULL, DateFormat.FULL).create();
-		LibroRepresentation libro = new LibroRepresentation();
-		libro.setNombre("libroname");
-		libro.setISBN("asd");
-		libro.setAutores("asd,asd");
-		libro.setIdLibro(1);
-		return parser.toJson(libro);
-		/*FachadaPersistencia fp = new FachadaPersistencia();
+		FachadaPersistencia fp = new FachadaPersistencia();
 		LibroDTO libro = fp.getLibroById(Integer.parseInt(id));
+		
 
 		Gson parser = new GsonBuilder().setDateFormat(DateFormat.FULL, DateFormat.FULL).create();
 
 		if (null != libro) {
-			return parser.toJson(libro);
+			LibroRepresentation representation = new LibroRepresentation();
+			representation.setIdLibro(libro.getIdLibro());
+			representation.setNombre(libro.getNombre());
+			representation.setISBN(libro.getISBN());
+			representation.setAutores(libro.getAutores());
+			return parser.toJson(representation);
 		}else {
-			return parser.toJson("error");
-		}*/
+			return parser.toJson("error: id " + id);
+		}
 
 	}
 

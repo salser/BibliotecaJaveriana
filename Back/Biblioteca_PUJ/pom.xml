@@ -55,12 +55,13 @@
 			<version>2.8.2</version>
 		</dependency>
 
-		
+
 		<!-- Persistencia -->
 		<dependency>
 			<groupId>co.edu.javeriana</groupId>
 			<artifactId>Persistencia_Biblioteca</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+			<type>jar</type>
 		</dependency>
 	</dependencies>
 	<build>

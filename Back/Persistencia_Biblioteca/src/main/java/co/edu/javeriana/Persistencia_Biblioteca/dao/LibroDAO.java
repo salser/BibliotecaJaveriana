@@ -160,6 +160,7 @@ public class LibroDAO extends AbstractDAO {
 			boolean flag = row != null;
 
 			if (flag) {
+				System.out.println("returns a book");
 				LibroBO libro = (LibroBO) row;
 				session.save(libro);
 				tx.commit();
