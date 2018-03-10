@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Libro } from '../shared/libro';
+import { LibroService } from '../shared/libro.service';
 
 @Component({
   selector: 'app-libro-add',
@@ -10,13 +11,31 @@ import { Libro } from '../shared/libro';
 export class LibroAddComponent implements OnInit {
 
   libro: Libro;
+  insertMessage: string;
+  showMessage: boolean;
 
   agregarLibro() {
-    // TODO agregar a la base de datos
-    console.log('Agrega libro');
+      this.service
+        .insert(
+          this.libro.nombre,
+          this.libro.isbn,
+          this.libro.autores)
+        .subscribe(
+          libro => function() {
+            console.log('inserta');
+            this.showMessage = true;
+            this.insertMessage = 'El libro: ' + this.libro.nombre + ' fue insertado satisfactoriamente';
+           },
+          error => console.log('Error: ' + error)
+        );
+    console.log('inserta');
+    this.showMessage = true;
+    this.insertMessage = 'El libro: ' + this.libro.nombre + ' fue insertado satisfactoriamente';
   }
-  constructor() {
+  constructor(private service: LibroService) {
     this.libro = new Libro();
+    this.insertMessage = '';
+    this.showMessage = false;
   }
 
   ngOnInit() {

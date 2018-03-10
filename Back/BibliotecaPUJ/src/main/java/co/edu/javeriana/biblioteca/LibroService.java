@@ -26,4 +26,29 @@ public class LibroService {
 	Optional<Libro> find(@PathVariable("id") Long id) {
 		return repository.findById(id);
 	}
+
+	@RequestMapping("/libros/eliminar/{id}")
+	void deleteById(@PathVariable("id") Long id) {
+		repository.deleteById(id);
+	}
+
+	@RequestMapping("/libros/actualizar/{id}/{nombre}/{isbn}/{autores}")
+	void updateById(@PathVariable("id") Long id, @PathVariable("nombre") String nombre,
+			@PathVariable("isbn") String isbn, @PathVariable("autores") String autores) {
+		Libro libro = repository.findById(id).get();
+		libro.setNombre(nombre);
+		libro.setIsbn(isbn);
+		libro.setAutores(autores);
+		repository.save(libro);
+	}
+	
+	@RequestMapping("/libros/insertar/{nombre}/{isbn}/{autores}")
+	void insert(@PathVariable("nombre") String nombre,
+			@PathVariable("isbn") String isbn, @PathVariable("autores") String autores) {
+		Libro libro = new Libro();
+		libro.setNombre(nombre);
+		libro.setIsbn(isbn);
+		libro.setAutores(autores);
+		repository.save(libro);
+	}
 }

@@ -16,7 +16,7 @@ import javax.persistence.Id;
 public class Libro {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "idLibro")
 	private Long idLibro;
 	

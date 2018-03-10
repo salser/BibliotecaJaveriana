@@ -1,6 +1,7 @@
 import { LibroService } from './../shared/libro.service';
 import { Libro } from './../shared/libro';
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-libro-list',
@@ -13,6 +14,7 @@ export class LibroListComponent implements OnInit {
   verLibro: boolean;
   selectedLibro: Libro;
   idFind: number;
+  deleteIt: boolean;
   constructor(private service: LibroService) {
     this.verLibro = false;
   }
@@ -20,7 +22,7 @@ export class LibroListComponent implements OnInit {
   ngOnInit() {
     this.service.findAll()
       .subscribe(libros => this.libros = libros);
-      this.selectedLibro = new Libro();
+    this.selectedLibro = new Libro();
   }
   verLibroClick(id) {
     this.verLibro = true;
@@ -34,6 +36,31 @@ export class LibroListComponent implements OnInit {
 
   eliminarLibro(id) {
     this.verLibro = false;
-    confirm('Estas seguro?');
+    this.deleteIt = confirm('Estas seguro?');
+    if (this.deleteIt) {
+      this.service.deleteById(id)
+        .subscribe(
+          libro => console.log('elimina'),
+          error => console.log('Error: ' + error));
+      this.ngOnInit();
+    }
+  }
+
+  actualizarLibro(id) {
+    this.service
+      .updateById(
+        this.selectedLibro.idLibro,
+        this.selectedLibro.nombre,
+        this.selectedLibro.isbn,
+        this.selectedLibro.autores)
+      .subscribe(
+        libro => console.log('actualiza'),
+        error => console.log('Error: ' + error)
+      );
+    this.ngOnInit();
+  }
+
+  hideDescription() {
+    this.verLibro = false;
   }
 }
