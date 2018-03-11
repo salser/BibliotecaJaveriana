@@ -4,16 +4,19 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Usuario {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "idUsuario")
 	private long idUsuario;
 	
@@ -26,15 +29,12 @@ public class Usuario {
 	@Column(name = "rol")
 	private String rol;
 	
-	@OneToMany(mappedBy = "libro")
+	@OneToMany
+	@JsonIgnore
 	private List<Prestamo> prestamos;
 
-	public Usuario(long idUsuario, String usuario, String contrasena, String rol) {
+	public Usuario() {
 		super();
-		this.idUsuario = idUsuario;
-		this.usuario = usuario;
-		this.contrasena = contrasena;
-		this.rol = rol;
 	}
 
 	public long getIdUsuario() {

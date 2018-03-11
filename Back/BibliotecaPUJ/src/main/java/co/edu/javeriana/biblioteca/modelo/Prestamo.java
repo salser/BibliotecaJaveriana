@@ -34,12 +34,8 @@ public class Prestamo {
 	
 	
 
-	public Prestamo(long idPrestamo, Date fechaPrestamo, Date fechaVencimiento, Date fechaDevolucion) {
+	public Prestamo() {
 		super();
-		this.idPrestamo = idPrestamo;
-		this.fechaPrestamo = fechaPrestamo;
-		this.fechaVencimiento = fechaVencimiento;
-		this.fechaDevolucion = fechaDevolucion;
 	}
 
 	public long getIdPrestamo() {
