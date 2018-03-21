@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { HttpClientModule } from '@angular/common/http';
 import { LibroService } from './biblioteca/shared/libro.service';
+import { LoginComponent } from './biblioteca/login/login.component';
+
 
 
 @NgModule({
@@ -18,7 +20,8 @@ import { LibroService } from './biblioteca/shared/libro.service';
     AppComponent,
     LibroListComponent,
     LibroViewComponent,
-    LibroAddComponent
+    LibroAddComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

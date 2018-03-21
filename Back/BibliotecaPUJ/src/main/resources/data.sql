@@ -9,5 +9,7 @@ insert into Libro values(8, 'cien años8', '123-456', 'yo,yo');
 insert into Libro values(9, 'cien años9', '123-456', 'yo,yo');
 insert into Libro values(10, 'cien años10', '123-456', 'yo,yo');
 
-insert into Usuario values(1, 'asd', 'asd', 'usuario');
+insert into Usuario values(1, 'asd', 'usuario', 'asd');
+insert into Usuario values(2, 'qwe', 'biblio', 'qwe');
+
 

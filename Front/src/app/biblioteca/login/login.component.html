@@ -1,0 +1,23 @@
+<div id="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">Login <i class="fa fa-book"></i></div>
+        <div class="panel-body">
+            <form id="signin" role="form" (ngSubmit)="doLogin()">
+                <label for="user">Nombre de usuario</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    <input type="text" class="form-control" name="user" placeholder="Nombre de usuario" [(ngModel)]="user">
+                </div>
+                <br>
+                <label for="pass">Contraseña</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    <input type="password" class="form-control" name="pass" placeholder="Contraseña" [(ngModel)]="password">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary pull-right">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
