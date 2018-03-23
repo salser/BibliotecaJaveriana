@@ -21,16 +21,48 @@ export class LibroListComponent implements OnInit {
 
   ngOnInit() {
     this.service.findAll()
-      .subscribe(libros => this.libros = libros);
+      .subscribe(data => {
+        console.log(data);
+        const result = [];
+        const keys = Object.keys(data);
+        keys.forEach(function (key) {
+          result.push(data[key]);
+        });
+        console.log(keys.length);
+        const librosAux: Libro[] = [];
+        for (let i = 0; i < keys.length; i++) {
+          const libro: Libro = new Libro();
+          const key: any = keys[i];
+          libro.nombre = data[key].nombre;
+          libro.autores = data[key].autores;
+          libro.isbn = data[key].isbn;
+          libro.idLibro = data[key].idLibro;
+          librosAux.push(libro);
+        }
+        this.libros = librosAux;
+      }, error => {
+        console.log(error.status);
+        if (error.status === 403) {
+          window.location.href = 'http://localhost:4200/biblioteca/login';
+        }
+      });
     this.selectedLibro = new Libro();
   }
   verLibroClick(id) {
     this.verLibro = true;
     this.idFind = id;
-    console.log('id: ' + id);
+    // console.log('id: ' + id);
     this.service.findById(this.idFind)
       .subscribe(
-        libro => this.selectedLibro = libro,
+        data => {
+          const libro: Libro = new Libro();
+          this.selectedLibro = <Libro> data;
+          console.log(this.selectedLibro);
+          /*libro.nombre = data[0].nombre;
+          libro.isbn = data[0].isbn;
+          libro.autores = data[0].autores;
+          libro.idLibro = data[0].idLibro;*/
+        },
         error => console.log('Error: ' + error));
   }
 

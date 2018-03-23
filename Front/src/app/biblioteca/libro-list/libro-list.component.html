@@ -27,8 +27,8 @@
             </tr>
         </tbody>
     </table>
-
-    <a [routerLink]="['/biblioteca/libro-add']" routerLinkActive="router-link-active">Agregar</a>
+    <!-- <a class="btn btn-primary" style="color: white;" (click)="getTestData()">Test</a> -->
+    <a class="btn btn-primary" [routerLink]="['/biblioteca/libro-add']" routerLinkActive="router-link-active">Agregar</a>
     <hr>
     <div [hidden]="!verLibro">
         <h2>Ver Libro</h2>
@@ -47,9 +47,6 @@
                         <label for="autores">Autores</label>
                         <input class="form-control" name="autores" type="text" id="autores" [(ngModel)]="selectedLibro.autores " placeholder="Autores">
                         <small id="autoresAyuda " class="form-text text-muted ">Separa cada autor en cómas</small>
-                    </div>
-                    <div class="from-group">
-                        <input type="date">
                     </div>
                     <button type="submit " class="btn btn-primary ">Enviar</button>
                 </form>

@@ -3,6 +3,8 @@ package co.edu.javeriana.biblioteca.security;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,6 +17,7 @@ import co.edu.javeriana.biblioteca.modelo.UsuarioRepository;
 
 @Service
 public class RESTUserDetailsService implements UserDetailsService {
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	Map<String, User> users = new HashMap<>();
 	@Autowired
 	private UsuarioRepository repository;
@@ -44,7 +47,8 @@ public class RESTUserDetailsService implements UserDetailsService {
 				auth = new User(usu.getUsuario(), usu.getContrasena(), "ROLE_BIBLIO");
 			}
 		}
-		System.out.println("*** Retrieving user");
+		users.put(auth.getUsername(), auth);
+		logger.debug("*** Retrieving user " + auth);
 		return auth;
 	}	
 

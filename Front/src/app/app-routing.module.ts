@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'biblioteca/login' },
   { path: 'biblioteca/libro-add', component: LibroAddComponent },
   { path: 'biblioteca/login', component: LoginComponent },
+  { path: '**', component: LoginComponent}// 404NotFound
 ];
 
 @NgModule({
@@ -18,3 +19,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+

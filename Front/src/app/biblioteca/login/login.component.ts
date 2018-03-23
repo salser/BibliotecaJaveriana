@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
   doLogin() {
     console.log(this.user + ' - ' + this.password);
     this.loginService.login(this.user, this.password).subscribe(data => {
-      this.message = 'Login Ok';
+      alert(data);
+      window.location.href = 'http://localhost:4200/biblioteca/libro-list';
     }, error => {
       console.error(error);
       this.message = JSON.stringify(error);

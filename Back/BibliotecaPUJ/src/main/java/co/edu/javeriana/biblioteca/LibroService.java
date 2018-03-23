@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import co.edu.javeriana.biblioteca.modelo.Libro;
 import co.edu.javeriana.biblioteca.modelo.LibroRepository;
 
-@RestController
+@RestController()
 @CrossOrigin(origins = "http://localhost:4200")
 public class LibroService {
 
@@ -23,12 +23,18 @@ public class LibroService {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	@PreAuthorize("hasRole('ROLE_USUARIO') or hasRole('ROLE_BIBLIO') ") 
-	@RequestMapping("/libros")
+	@RequestMapping(value = "/test", produces = "application/json")
+	public String test() {
+		return "{\"value\": \"ok\"}";
+	}
+	
+	@PreAuthorize("hasRole('ROLE_USUARIO')")
+	@RequestMapping(value = "/libros", produces = "application/json")
 	Iterable<Libro> findAll() {
 		return repository.findAll();
 	}
 
+	@PreAuthorize("hasRole('ROLE_USUARIO')")
 	@RequestMapping("/libros/{id}")
 	Optional<Libro> find(@PathVariable("id") Long id) {
 		return repository.findById(id);

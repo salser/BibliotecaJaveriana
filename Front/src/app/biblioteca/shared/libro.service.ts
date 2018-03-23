@@ -9,12 +9,17 @@ export class LibroService {
 
   constructor(private http: HttpClient) {
   }
-  findAll(): Observable<Libro[]> {
-    return this.http.get<Libro[]>('http://localhost:8080/libros');
+
+  findAll() {
+    return this.http.post('http://localhost:8080/libros/', '', {
+      withCredentials: true
+    });
   }
 
-  findById(id: number): Observable<Libro> {
-    return this.http.get<Libro>('http://localhost:8080/libros/' + id);
+  findById(id: number) {
+    return this.http.post('http://localhost:8080/libros/' + id, '', {
+      withCredentials: true
+    });
   }
 
   deleteById(id: number): Observable<Libro> {
