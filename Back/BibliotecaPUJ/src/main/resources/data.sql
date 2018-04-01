@@ -15,4 +15,6 @@ insert into Usuario values(3, 'asd', 'biblio', 'biblio');
 
 
 
-insert into Prestamo values(1, null, TO_DATE('01/01/2018', 'dd/mm/yyyy'), TO_DATE('01/01/2018', 'dd/mm/yyyy'), 1, 1);
+insert into Prestamo values(1, null, TO_DATE('31/03/2018', 'dd/mm/yyyy'), TO_DATE('08/04/2018', 'dd/mm/yyyy'), 1, 1);
+
+

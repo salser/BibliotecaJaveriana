@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Prestamo } from '../shared/Prestamo';
 import { LibroService } from '../shared/libro.service';
+import { User } from '../shared/user';
 
 @Component({
   selector: 'app-prestamos-list',
@@ -10,11 +11,15 @@ import { LibroService } from '../shared/libro.service';
 export class PrestamosListComponent implements OnInit {
 
   prestamos: Prestamo[];
+  usuario: string;
 
   constructor(private service: LibroService) { }
 
   ngOnInit() {
-    this.service.getCurrentUser().subscribe(data => this.usuario = data.username);
+    this.service.getCurrentUser().subscribe(data => {
+      const u: User = <User>data;
+      this.usuario = u.username;
+    });
 
     this.service.findAllPrestamos()
       .subscribe(data => {
@@ -54,4 +59,8 @@ export class PrestamosListComponent implements OnInit {
     this.service.finishBook(idPrestamo).subscribe(data => location.reload());
   }
 
+  logout() {
+    this.service.logout().subscribe();
+    window.location.href = 'http://localhost:4200/';
+  }
 }

@@ -98,4 +98,9 @@ export class LibroListComponent implements OnInit {
   hideDescription() {
     this.verLibro = false;
   }
+
+  logout() {
+    this.service.logout().subscribe();
+    window.location.href = 'http://localhost:4200/';
+  }
 }

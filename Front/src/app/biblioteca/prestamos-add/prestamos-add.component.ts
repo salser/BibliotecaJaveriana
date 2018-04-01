@@ -3,6 +3,7 @@ import { Prestamo } from '../shared/Prestamo';
 import { Usuario } from '../shared/Usuario';
 import { LibroService } from '../shared/libro.service';
 import { Libro } from '../shared/libro';
+import { User } from '../shared/user';
 
 @Component({
   selector: 'app-prestamos-add',
@@ -51,8 +52,9 @@ export class PrestamosAddComponent implements OnInit {
         }
       });
     this.service.getCurrentUser().subscribe(data => {
-      console.log(data.username);
-      this.usuario = data.username;
+      const u: User = <User> data;
+      console.log(u.username);
+      this.usuario = u.username;
     });
   }
 
@@ -67,5 +69,10 @@ export class PrestamosAddComponent implements OnInit {
         this.showMessage = true;
         this.insertMessage = 'Error insertando prestamo!';
     });
+  }
+
+  logout() {
+    this.service.logout().subscribe();
+    window.location.href = 'http://localhost:4200/';
   }
 }

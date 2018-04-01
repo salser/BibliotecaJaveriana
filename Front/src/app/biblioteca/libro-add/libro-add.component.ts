@@ -32,6 +32,11 @@ export class LibroAddComponent implements OnInit {
     this.showMessage = true;
     this.insertMessage = 'El libro: ' + this.libro.nombre + ' fue insertado satisfactoriamente';
   }
+
+  logout() {
+    this.service.logout().subscribe();
+    window.location.href = 'http://localhost:4200/';
+  }
   constructor(private service: LibroService) {
     this.libro = new Libro();
     this.insertMessage = '';
