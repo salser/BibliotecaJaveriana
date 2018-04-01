@@ -23,38 +23,39 @@ public class LibroService {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	@RequestMapping(value = "/test", produces = "application/json")
-	public String test() {
-		return "{\"value\": \"ok\"}";
-	}
-	
-	@PreAuthorize("hasRole('ROLE_USUARIO')")
+	@PreAuthorize("hasRole('ROLE_BIBLIO') OR hasRole('ROLE_USUARIO')")
 	@RequestMapping(value = "/libros", produces = "application/json")
 	Iterable<Libro> findAll() {
 		return repository.findAll();
 	}
 
-	@PreAuthorize("hasRole('ROLE_USUARIO')")
+	@PreAuthorize("hasRole('ROLE_BIBLIO')")
 	@RequestMapping("/libros/{id}")
 	Optional<Libro> find(@PathVariable("id") Long id) {
 		return repository.findById(id);
 	}
-
+	
+	@PreAuthorize("hasRole('ROLE_BIBLIO')")
 	@RequestMapping("/libros/eliminar/{id}")
-	void deleteById(@PathVariable("id") Long id) {
+	Optional<Libro> deleteById(@PathVariable("id") Long id) {
+		Optional<Libro> deleteIt = repository.findById(id);
 		repository.deleteById(id);
+		return deleteIt;
 	}
 
+	@PreAuthorize("hasRole('ROLE_BIBLIO')")
 	@RequestMapping("/libros/actualizar/{id}/{nombre}/{isbn}/{autores}")
-	void updateById(@PathVariable("id") Long id, @PathVariable("nombre") String nombre,
+	Optional<Libro> updateById(@PathVariable("id") Long id, @PathVariable("nombre") String nombre,
 			@PathVariable("isbn") String isbn, @PathVariable("autores") String autores) {
 		Libro libro = repository.findById(id).get();
 		libro.setNombre(nombre);
 		libro.setIsbn(isbn);
 		libro.setAutores(autores);
 		repository.save(libro);
+		return repository.findById(id);
 	}
 	
+	@PreAuthorize("hasRole('ROLE_BIBLIO')")
 	@RequestMapping("/libros/insertar/{nombre}/{isbn}/{autores}")
 	void insert(@PathVariable("nombre") String nombre,
 			@PathVariable("isbn") String isbn, @PathVariable("autores") String autores) {

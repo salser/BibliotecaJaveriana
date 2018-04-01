@@ -22,25 +22,37 @@ export class LibroService {
     });
   }
 
-  deleteById(id: number): Observable<Libro> {
-    return this.http.get<Libro>('http://localhost:8080/libros/eliminar/' + id);
+  deleteById(id: number) {
+    return this.http.post('http://localhost:8080/libros/eliminar/' + id, '', {
+      withCredentials: true
+    });
   }
 
-  updateById(id: number, nombre: string, isbn: string, autores: string): Observable<Libro> {
+  updateById(id: number, nombre: string, isbn: string, autores: string) {
     return this.http.
-        get<Libro>('http://localhost:8080/libros/actualizar/'
+        post('http://localhost:8080/libros/actualizar/'
          + id + '/'
          + nombre + '/'
          + isbn + '/'
-         + autores);
+         + autores, '', {
+           withCredentials: true
+         });
   }
 
-  insert(nombre: string, isbn: string, autores: string): Observable<Libro> {
+  insert(nombre: string, isbn: string, autores: string) {
     return this.http.
-      get<Libro>('http://localhost:8080/libros/insertar/'
+      post('http://localhost:8080/libros/insertar/'
         + nombre + '/'
         + isbn + '/'
-        + autores);
+        + autores, '', {
+          withCredentials: true
+        });
+  }
+
+  findAllPrestamos() {
+    return this.http.post('http://localhost:8080/prestamos/', '', {
+      withCredentials: true
+    });
   }
 
   login(username: string, password: string) {
@@ -56,4 +68,48 @@ export class LibroService {
     });
   }
 
+  getuser(username: string) {
+    return this.http.post('http://localhost:8080/user/' + username, '', {
+      withCredentials: true
+    });
+  }
+
+  findUserById(id: number) {
+    return this.http.post('http://localhost:8080/userId/' + id, '', {
+      withCredentials: true
+    });
+  }
+
+  findAllUsers() {
+    return this.http.post('http://localhost:8080/users', '', {
+      withCredentials: true
+    });
+  }
+
+  getCurrentUser() {
+    return this.http.post('http://localhost:8080/current-user', '', {
+      withCredentials: true
+    });
+  }
+
+  insertPrestamo(libro: number, user: string) {
+    return this.http.
+      post('http://localhost:8080//prestamos/insertar/'
+        + libro + '/'
+        + user + '/', '', {
+          withCredentials: true
+        });
+  }
+
+  logout() {
+    return this.http.post('http://localhost:8080/logout', '', {
+      withCredentials: true
+    });
+  }
+
+  finishBook(id: number) {
+    return this.http.post('http://localhost:8080/prestamos/devolucion/' + id + '/', '', {
+      withCredentials: true
+    });
+  }
 }

@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 public class Prestamo {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "idPrestamo")
 	private long idPrestamo;
 	

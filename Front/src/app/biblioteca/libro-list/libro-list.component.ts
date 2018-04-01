@@ -72,10 +72,10 @@ export class LibroListComponent implements OnInit {
     if (this.deleteIt) {
       this.service.deleteById(id)
         .subscribe(
-          libro => console.log('elimina'),
+        data => alert('se eliminó ' + (<Libro>data).nombre + ' con ISBN: ' + (<Libro>data).isbn) ,
           error => console.log('Error: ' + error));
-      this.ngOnInit();
     }
+    location.reload();
   }
 
   actualizarLibro(id) {
@@ -86,10 +86,13 @@ export class LibroListComponent implements OnInit {
         this.selectedLibro.isbn,
         this.selectedLibro.autores)
       .subscribe(
-        libro => console.log('actualiza'),
+        data => {
+          const libro: Libro = <Libro> data;
+          alert('actualiza registro: Nombre: ' + libro.nombre + ' ISBN: ' + libro.isbn);
+        },
         error => console.log('Error: ' + error)
       );
-    this.ngOnInit();
+    location.reload();
   }
 
   hideDescription() {

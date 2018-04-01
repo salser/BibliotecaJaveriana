@@ -1,0 +1,23 @@
+<div class="container">
+    <div [hidden]="!showMessage" class="alert alert-warning">
+        {{ insertMessage }}
+    </div>
+    <h1>Nuevo Prestamo</h1>
+    <hr>
+    <div class="row">
+        <div class="col-lg-12">
+            <form (ngSubmit)="agregarPrestamo()" style="margin-bottom: 10px">
+                <h6>Usuario: {{ usuario }}</h6>
+                <div class="form-group">
+                    <label for="libros">Libro: </label>
+                    <select name="libros" id="libros" [(ngModel)]="selectedLibro">
+                        <option *ngFor="let libro of libros" value="{{ libro.idLibro }}">{{ libro.nombre }} | ISBN: {{ libro.isbn }}</option>
+                    </select>
+                </div>
+
+                <button type="submit " class="btn btn-primary "> Crear Nuevo Prestamo</button>
+            </form>
+            <a [routerLink]="[ '/biblioteca/prestamos-list'] " routerLinkActive="router-link-active ">Regresar</a>
+        </div>
+    </div>
+</div>

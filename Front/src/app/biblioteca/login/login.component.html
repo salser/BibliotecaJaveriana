@@ -3,6 +3,9 @@
         <div class="panel-heading">Login <i class="fa fa-book"></i></div>
         <div class="panel-body">
             <form id="signin" role="form" (ngSubmit)="doLogin()">
+                <div style="color: red" [hidden]="!showMessage" class="alert alert-warning">
+                    <strong>Error</strong> {{ message }}
+                </div>
                 <label for="user">Nombre de usuario</label>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>

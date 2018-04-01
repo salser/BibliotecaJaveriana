@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>Prestamos Activos</h1>
+    <table class="table" style="margin-bottom: 30px;">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Devolución</th>
+                <th scope="col">Vencimiento</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Libro</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let prestamo of prestamos">
+                <th>{{ prestamo.idPrestamo }}</th>
+                <td>{{ prestamo.fechaPrestamo | date }}</td>
+                <td [hidden]="prestamo.fechaDevolucion === null">{{ prestamo.fechaDevolucion | date}}</td>
+                <td [hidden]="prestamo.fechaDevolucion != null">Sin devolución</td>
+                <td>{{ prestamo.fechaVencimiento | date }}</td>
+                <td>{{ prestamo.usuario.usuario }}</td>
+                <td>{{ prestamo.libro.nombre }}</td>
+                <td>
+                    <a [hidden]="prestamo.fechaDevolucion != null" (click)="finalizarPrestamo(prestamo.idPrestamo)"><i class="fa fa-edit"></i>Hacer Devolución</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" [routerLink]="['/biblioteca/prestamos-add']" routerLinkActive="router-link-active">Nuevo Prestamo</a>
+</div>

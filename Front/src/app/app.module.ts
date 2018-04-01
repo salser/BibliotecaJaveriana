@@ -12,6 +12,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { HttpClientModule } from '@angular/common/http';
 import { LibroService } from './biblioteca/shared/libro.service';
 import { LoginComponent } from './biblioteca/login/login.component';
+import { PrestamosListComponent } from './biblioteca/prestamos-list/prestamos-list.component';
+import { PrestamosAddComponent } from './biblioteca/prestamos-add/prestamos-add.component';
 
 
 
@@ -21,7 +23,9 @@ import { LoginComponent } from './biblioteca/login/login.component';
     LibroListComponent,
     LibroViewComponent,
     LibroAddComponent,
-    LoginComponent
+    LoginComponent,
+    PrestamosListComponent,
+    PrestamosAddComponent
   ],
   imports: [
     BrowserModule,
