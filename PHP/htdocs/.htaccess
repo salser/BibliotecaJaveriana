@@ -1,0 +1,12 @@
+RewriteEngine on
+
+RewriteRule ^articles/([^/]+) /articles.php?id=$1
+RewriteRule ^gamedata/([^/]+) /gamedata.php?id=$1
+
+RewriteRule ^me(|/)$ me.php
+RewriteRule ^register(|/)$ register.php
+RewriteRule ^staff(|/)$ staff.php
+RewriteRule ^logout(|/)$ logout.php
+RewriteRule ^articles(|/)$ articles.php
+RewriteRule ^client(|/)$ client.php
+RewriteRule ^security_check(|/)$ security_check.php
